@@ -40,26 +40,45 @@ public:
 		for (int i = 0; i < m_size; std::cout << '(' << m_data[i] << ')', i++);
 	}
 
-	~DSU() {}
+	~DSU() {
+		delete[] m_data;
+		delete[] m_rank;
+	}
 
 };
 
 class Maze {
 private:
+	DSU m_dsu;
 	bool* m_right;
 	bool* m_bottom;
 public:
-	Maze(int size) {
+	Maze(int size) : m_dsu(size) {
 		m_right = new bool[size];
 		m_bottom = new bool[size];
 	}
 
-	bool get_right_wall(int x) { return m_right[x]; }
-	bool get_bottom_wall(int x) { return m_bottom[x]; }
-	void set_right_wall(int x, bool value) { m_right[x] = value; }
-	void set_bottom_wall(int x, bool value) { m_bottom[x] = value; }
+	void create() {
+		
+	}
 
-	~Maze() {}
+	bool is_not_in_one_path(int x_wall, int y_wall) { return m_dsu.find(x_wall) != m_dsu.find(y_wall); }
+	void continue_path(int x, int y) { m_dsu.unite(x, y); }
+	int get_start_position(int x) { return m_dsu.find(x); }
+
+	bool is_right_wall(int x) { return m_right[x]; }
+	bool is_bottom_wall(int x) { return m_bottom[x]; }
+	void destroy_right_wall(int x) { m_right[x] = false; }
+	void destroy_bottom_wall(int x) { m_bottom[x] = false; }
+
+	void print() {
+
+	}
+
+	~Maze() {
+		delete[] m_right;
+		delete[] m_bottom;
+	}
 };
 
 int main() {
@@ -89,7 +108,7 @@ int main() {
 
 	std::cout << "\nMaze\n";
 
-	int maze_size = 5;
+	int maze_size = 10;
 
 	DSU maze_dsu(maze_size * maze_size);
 	Maze maze(maze_size * maze_size);
@@ -107,16 +126,17 @@ int main() {
 		int j = rand() % size;
 
 		int x = (walls[j] - 1) / 2;
+
 		if (walls[j] % 2 == 0) {
-			if (maze_dsu.find(x) != maze_dsu.find(x + 1)) {
-				maze_dsu.unite(maze_dsu.find(x), maze_dsu.find(x + 1));
-				maze.set_right_wall(x, false);
+			if (maze.is_not_in_one_path(x, x + 1)) {
+				maze.continue_path(maze.get_start_position(x), maze.get_start_position(x + 1));
+				maze.destroy_right_wall(x);
 			}
 		}
 		else {
-			if (maze_dsu.find(x) != maze_dsu.find(x + maze_size)) {
-				maze_dsu.unite(maze_dsu.find(x), maze_dsu.find(x + maze_size));
-				maze.set_bottom_wall(x, false);
+			if (maze.is_not_in_one_path(x, x + maze_size)) {
+				maze.continue_path(maze.get_start_position(x), maze.get_start_position(x + maze_size));
+				maze.destroy_bottom_wall(x);
 			}
 		}
 
@@ -134,13 +154,13 @@ int main() {
 			if (j == maze_size * maze_size - 1) {
 				std::cout << "  |";
 			}
-			else if (maze.get_right_wall(j) && maze.get_bottom_wall(j)) {
+			else if (maze.is_right_wall(j) && maze.is_bottom_wall(j)) {
 				std::cout << "__|";
 			}
-			else if (maze.get_right_wall(j)) {
+			else if (maze.is_right_wall(j)) {
 				std::cout << "  |";
 			}
-			else if (maze.get_bottom_wall(j)) {
+			else if (maze.is_bottom_wall(j)) {
 				std::cout << "__ ";
 			}
 			else {

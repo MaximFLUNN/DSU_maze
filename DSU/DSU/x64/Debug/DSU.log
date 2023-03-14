@@ -1,4 +1,4 @@
 ﻿  DSU.cpp
-D:\StudioProject\DSU\DSU\DSU.cpp(66,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-D:\StudioProject\DSU\DSU\DSU.cpp(105,26): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-  DSU.vcxproj -> D:\StudioProject\DSU\x64\Debug\DSU.exe
+C:\Users\s21380400\Desktop\DSU_maze-main\DSU\DSU\DSU.cpp(85,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\s21380400\Desktop\DSU_maze-main\DSU\DSU\DSU.cpp(124,26): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  DSU.vcxproj -> C:\Users\s21380400\Desktop\DSU_maze-main\DSU\x64\Debug\DSU.exe
