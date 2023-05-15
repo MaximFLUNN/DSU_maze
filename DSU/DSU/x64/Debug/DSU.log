@@ -1,3 +1,0 @@
-﻿  DSU.cpp
-D:\StudioProject\DSU\DSU\DSU.cpp(493,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-  DSU.vcxproj -> D:\StudioProject\DSU\x64\Debug\DSU.exe
