@@ -1,0 +1,4 @@
+﻿  DSU.cpp
+C:\Users\ASUS\OneDrive\Рабочий стол\DSU_maze-main\DSU\DSU\DSU.cpp(119,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\ASUS\OneDrive\Рабочий стол\DSU_maze-main\DSU\DSU\DSU.cpp(180,26): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  DSU.vcxproj -> C:\Users\ASUS\OneDrive\Рабочий стол\DSU_maze-main\DSU\x64\Debug\DSU.exe

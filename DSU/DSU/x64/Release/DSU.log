@@ -1,0 +1,11 @@
+﻿  DSU.cpp
+D:\StudioProject\DSU\DSU\DSU.cpp(12,1): warning C4267: аргумент: преобразование из "size_t" в "_Ty"; возможна потеря данных
+          with
+          [
+              _Ty=int
+          ]
+  Создание кода
+  Previous IPDB not found, fall back to full compilation.
+  All 92 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Создание кода завершено
+  DSU.vcxproj -> D:\StudioProject\DSU\x64\Release\DSU.exe
